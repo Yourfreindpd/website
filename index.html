@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>PRANEET DUBEY — Learner & Developer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body {
+    body, html {
+      width: 100vw;
+      height: 100vh;
       margin: 0;
-      min-height: 100vh;
+      padding: 0;
+      overscroll-behavior: none;
+    }
+    body {
       background: #151822 radial-gradient(circle at 50% 15%, #1f2336 60%, #1e2639 100%);
       color: #bafcff;
       font-family: 'Fira Mono', 'Consolas', monospace;
@@ -49,8 +54,12 @@
       overflow: hidden;
     }
     @keyframes blinkC {
-      0%,100% { border-right-color: #bafcff; }
-      40% { border-right-color: transparent; }
+      0%, 100% {
+        border-right-color: #bafcff;
+      }
+      40% {
+        border-right-color: transparent;
+      }
     }
     .basic-about {
       margin-top: 18px;
@@ -103,10 +112,16 @@
     svg defs linearGradient[id="ig-gradient"] stop[offset="50%"] { stop-color: #fca; }
     svg defs linearGradient[id="ig-gradient"] stop[offset="100%"] { stop-color: #e1306c; }
     @media (max-width: 540px) {
-      .center-box { margin-top: 7vh; padding: 24px 8vw 14px 8vw; }
-      .typewriter { font-size: 1.08rem; }
+      .center-box {
+        margin-top: 7vh;
+        padding: 24px 8vw 14px 8vw;
+      }
+      .typewriter {
+        font-size: 1.08rem;
+      }
     }
-    /* Video Loader */
+
+    /* Video Loader Styles */
     #videoLoaderWrapper {
       position: fixed;
       z-index: 1000;
@@ -117,141 +132,166 @@
       align-items: center;
       justify-content: center;
       transition: opacity 0.8s;
+      touch-action: none;
     }
     #videoLoaderWrapper.hidden {
       opacity: 0;
       pointer-events: none;
     }
     #loadingVideo {
-      width: 100vw; height: 100vh; object-fit: cover;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
       display: block;
       background: #18193f;
     }
   </style>
 </head>
 <body>
-<!-- Video Loader Overlay -->
-<div id="videoLoaderWrapper">
-  <video id="loadingVideo" width="100%" height="100%" autoplay muted playsinline preload="auto"></video>
-</div>
-<canvas class="matrix" id="matrix"></canvas>
-<div class="center-box">
-  <div id="typewriter" class="typewriter"></div>
-  <div class="basic-about">
-    Hi, I'm <b>PRANEET DUBEY</b>.<br>
-    Engineering student and self-learner passionate about <b>coding, building simple projects, and exploring APIs</b>.<br>
-    Currently learning Python, JavaScript, CSS, and the basics of web APIs.<br>
-    I like making websites and automating little things.
+  <!-- Video Loader Overlay -->
+  <div id="videoLoaderWrapper">
+    <video
+      id="loadingVideo"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+    ></video>
   </div>
-  <div class="skills">
-    <div class="skill-tag">Python</div>
-    <div class="skill-tag">JavaScript</div>
-    <div class="skill-tag">CSS</div>
-    <div class="skill-tag">API Calling</div>
-    <div class="skill-tag">Beginner Projects</div>
-  </div>
-  <div class="socials">
-    <a href="https://github.com/" target="_blank" title="GitHub">
-      <svg class="github" viewBox="0 0 24 24">
-        <path d="M12 2C6.475 2 2 6.485 2 12.021c0 4.423 2.867 8.168 6.839 9.504.5.092.682-.216.682-.481 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.455-1.156-1.11-1.464-1.11-1.464-.908-.621.069-.609.069-.609 1.003.071 1.531 1.031 1.531 1.031.893 1.53 2.341 1.089 2.911.833.091-.647.35-1.089.636-1.341-2.22-.252-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.688-.103-.253-.447-1.269.098-2.645 0 0 .841-.27 2.75 1.026A9.564 9.564 0 0112 5.8c.851.004 1.707.115 2.507.338 1.909-1.296 2.749-1.026 2.749-1.026.546 1.376.202 2.392.1 2.645.64.701 1.028 1.595 1.028 2.688 0 3.847-2.338 4.696-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.577.687.479C19.136 20.185 22 16.441 22 12.021 22 6.485 17.523 2 12 2z"/>
-      </svg>
-    </a>
-    <a href="https://www.linkedin.com/in/praneet-dubey-3039531ba/" target="_blank" title="LinkedIn">
-      <svg class="linkedin" viewBox="0 0 24 24">
-        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.8-1.75-1.78s.79-1.78 1.75-1.78c.97 0 1.75.8 1.75 1.78s-.78 1.78-1.75 1.78zm13.5 10.28h-3v-4.79c0-1.14-.02-2.61-1.59-2.61-1.59 0-1.83 1.24-1.83 2.53v4.87h-3v-9h2.89v1.23h.04c.4-.76 1.36-1.56 2.8-1.56 3 0 3.56 1.97 3.56 4.54v4.79z"/>
-      </svg>
-    </a>
-    <a href="mailto:praneet.sky@zoho.com" title="Email">
-      <svg class="mail" viewBox="0 0 24 24">
-        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-      </svg>
-    </a>
-    <a href="https://www.instagram.com/praneet.213/" target="_blank" title="Instagram">
-      <svg class="instagram" viewBox="0 0 24 24">
-        <defs>
-          <linearGradient id="ig-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#fd5"/>
-            <stop offset="50%" stop-color="#fca"/>
-            <stop offset="100%" stop-color="#e1306c"/>
-          </linearGradient>
-        </defs>
-        <path fill="url(#ig-gradient)" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.7A4.05 4.05 0 0 0 3.7 7.75v8.5A4.05 4.05 0 0 0 7.75 20.3h8.5A4.05 4.05 0 0 0 20.3 16.25v-8.5A4.05 4.05 0 0 0 16.25 3.7h-8.5Zm4.25 2.55a5.75 5.75 0 1 1 0 11.5 5.75 5.75 0 0 1 0-11.5Zm0 1.7a4.05 4.05 0 1 0 0 8.1 4.05 4.05 0 0 0 0-8.1Zm5.08-.97a1.13 1.13 0 1 1-2.26 0 1.13 1.13 0 0 1 2.26 0Z"/>
-      </svg>
-    </a>
-  </div>
-</div>
-<script>
-  // Video Loader Logic
-  window.addEventListener("DOMContentLoaded", function() {
-    var video = document.getElementById('loadingVideo');
-    video.src = "preloader.mp4"; // <-- put your video filename here
-    video.onended = function() {
-      document.getElementById("videoLoaderWrapper").classList.add("hidden");
-    };
-    setTimeout(function() {
-      document.getElementById("videoLoaderWrapper").classList.add("hidden");
-    }, 6000);
-  });
 
-  // Matrix Background
-  const canvas = document.getElementById('matrix');
-  const ctx = canvas.getContext('2d');
-  let width = window.innerWidth;
-  let height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
-  let fontSize = 14;
-  let columns = Math.floor(width / fontSize);
-  const chars = '01py js css api < > { } [] ()';
-  let drops = [];
-  for(let x = 0; x < columns; x++) drops[x] = Math.random() * height/fontSize;
-  function drawMatrix() {
-    ctx.fillStyle = 'rgba(17, 24, 34, 0.22)';
-    ctx.fillRect(0, 0, width, height);
-    ctx.font = fontSize + "px Fira Mono, monospace";
-    for(let i = 0; i < drops.length; i++) {
-      const text = chars[Math.floor(Math.random() * chars.length)];
-      ctx.fillStyle = "#39cce9";
-      ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-      if(drops[i]*fontSize > height && Math.random() > .965) drops[i] = 0;
-      drops[i]++;
-    }
-  }
-  setInterval(drawMatrix, 59);
+  <canvas class="matrix" id="matrix"></canvas>
+  <div class="center-box">
+    <div id="typewriter" class="typewriter"></div>
+    <div class="basic-about">
+      Hi, I'm <b>PRANEET DUBEY</b>.<br />
+      Engineering student and self-learner passionate about <b>coding, building simple projects, and exploring APIs</b>.<br />
+      Currently learning Python, JavaScript, CSS, and the basics of web APIs.<br />
+      I like making websites and automating little things.
+    </div>
+    <div class="skills">
+      <div class="skill-tag">Python</div>
+      <div class="skill-tag">JavaScript</div>
+      <div class="skill-tag">CSS</div>
+      <div class="skill-tag">API Calling</div>
+      <div class="skill-tag">Beginner Projects</div>
+    </div>
+    <div class="socials">
+      <a href="https://github.com/" target="_blank" title="GitHub">
+        <svg class="github" viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.475 2 2 6.485 2 12.021c0 4.423 2.867 8.168 6.839 9.504.5.092.682-.216.682-.481 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.342-3.369-1.342-.455-1.156-1.11-1.464-1.11-1.464-.908-.621.069-.609.069-.609 1.003.071 1.531 1.031 1.531 1.031.893 1.53 2.341 1.089 2.911.833.091-.647.35-1.089.636-1.341-2.22-.252-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.688-.103-.253-.447-1.269.098-2.645 0 0 .841-.27 2.75 1.026A9.564 9.564 0 0112 5.8c.851.004 1.707.115 2.507.338 1.909-1.296 2.749-1.026 2.749-1.026.546 1.376.202 2.392.1 2.645.64.701 1.028 1.595 1.028 2.688 0 3.847-2.338 4.696-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.577.687.479C19.136 20.185 22 16.441 22 12.021 22 6.485 17.523 2 12 2z"
+          />
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/praneet-dubey-3039531ba/" target="_blank" title="LinkedIn">
+        <svg class="linkedin" viewBox="0 0 24 24">
+          <path
+            d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.8-1.75-1.78s.79-1.78 1.75-1.78c.97 0 1.75.8 1.75 1.78s-.78 1.78-1.75 1.78zm13.5 10.28h-3v-4.79c0-1.14-.02-2.61-1.59-2.61-1.59 0-1.83 1.24-1.83 2.53v4.87h-3v-9h2.89v1.23h.04c.4-.76 1.36-1.56 2.8-1.56 3 0 3.56 1.97 3.56 4.54v4.79z"
+          />
+        </svg>
+      </a>
+      <a href="mailto:praneet.sky@zoho.com" title="Email">
+        <svg class="mail" viewBox="0 0 24 24">
+          <path
+            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+          />
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/praneet.213/" target="_blank" title="Instagram">
+        <svg class="instagram" viewBox="0 0 24 24">
+          <defs>
+            <linearGradient id="ig-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fd5" />
+              <stop offset="50%" stop-color="#fca" />
+              <stop offset="100%" stop-color="#e1306c" />
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#ig-gradient)"
+            d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.7A4.05 4.05 0 0 0 3.7 7.75v8.5A4.05 4.05 0 0 0 7.75 20.3h8.5A4.05 4.05 0 0 0 20.3 16.25v-8.5A4.05 4.05 0 0 0 16.25 3.7h-8.5Zm4.25 2.55a5.75 5.75 0 1 1 0 11.5 5.75 5.75 0 0 1 0-11.5Zm0 1.7a4.05 4.05 0 1 0 0 8.1 4.05 4.05 0 0 0 0-8.1Zm5.08-.97a1.13 1.13 0 1 1-2.26 0 1.13 1.13 0 0 1 2.26 0Z"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+  <script>
+    // Video Loader Logic
+    window.addEventListener("DOMContentLoaded", function () {
+      var video = document.getElementById("loadingVideo");
+      video.src = "preloader.mp4"; // change filename if needed
+      video.onended = function () {
+        document.getElementById("videoLoaderWrapper").classList.add("hidden");
+      };
+      setTimeout(function () {
+        document.getElementById("videoLoaderWrapper").classList.add("hidden");
+      }, 6000);
+    });
 
-  window.addEventListener('resize', () => {
-    width = window.innerWidth;
-    height = window.innerHeight;
+    // Matrix Background
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+    let width = window.innerWidth;
+    let height = window.innerHeight;
     canvas.width = width;
     canvas.height = height;
-    columns = Math.floor(width / fontSize);
-    drops = [];
-    for(let x = 0; x < columns; x++) drops[x] = Math.random() * height/fontSize;
-  });
-
-  // Typewriter effect
-  const texts = [
-    "Python, JavaScript, CSS — Basic Learner",
-    "Building beginner coding projects!",
-    "Love playing with APIs & web tech"
-  ];
-  let i = 0, j = 0, isDel = false, loop = 0;
-  function type() {
-    const el = document.getElementById('typewriter');
-    if(loop >= texts.length) loop=0;
-    if (!isDel && j <= texts[loop].length) {
-      el.innerHTML = texts[loop].substring(0, j++);
-      setTimeout(type, 47);
-    } else if(isDel && j >= 0) {
-      el.innerHTML = texts[loop].substring(0, j--);
-      setTimeout(type, 24);
-    } else if(!isDel && j > texts[loop].length) {
-      isDel = true; setTimeout(type, 970);
-    } else if(isDel && j < 0) {
-      isDel = false; loop++; j=0; setTimeout(type, 550);
+    let fontSize = 14;
+    let columns = Math.floor(width / fontSize);
+    const chars = "01py js css api < > { } [] ()";
+    let drops = [];
+    for (let x = 0; x < columns; x++) drops[x] = Math.random() * height / fontSize;
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(17, 24, 34, 0.22)";
+      ctx.fillRect(0, 0, width, height);
+      ctx.font = fontSize + "px Fira Mono, monospace";
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillStyle = "#39cce9";
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > height && Math.random() > 0.965) drops[i] = 0;
+        drops[i]++;
+      }
     }
-  }
-  window.onload = type;
-</script>
+    setInterval(drawMatrix, 59);
+    window.addEventListener("resize", () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      columns = Math.floor(width / fontSize);
+      drops = [];
+      for (let x = 0; x < columns; x++) drops[x] = Math.random() * height / fontSize;
+    });
+
+    // Typewriter effect
+    const texts = [
+      "Python, JavaScript, CSS — Basic Learner",
+      "Building beginner coding projects!",
+      "Love playing with APIs & web tech",
+    ];
+    let i = 0,
+      j = 0,
+      isDel = false,
+      loop = 0;
+    function type() {
+      const el = document.getElementById("typewriter");
+      if (loop >= texts.length) loop = 0;
+      if (!isDel && j <= texts[loop].length) {
+        el.innerHTML = texts[loop].substring(0, j++);
+        setTimeout(type, 47);
+      } else if (isDel && j >= 0) {
+        el.innerHTML = texts[loop].substring(0, j--);
+        setTimeout(type, 24);
+      } else if (!isDel && j > texts[loop].length) {
+        isDel = true;
+        setTimeout(type, 970);
+      } else if (isDel && j < 0) {
+        isDel = false;
+        loop++;
+        j = 0;
+        setTimeout(type, 550);
+      }
+    }
+    window.onload = type;
+  </script>
 </body>
 </html>
